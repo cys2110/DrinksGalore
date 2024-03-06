@@ -22,7 +22,7 @@ const SearchBar = () => {
     <div className='dropdown'>
       <input
         type="text"
-        placeholder="Search..."
+        placeholder="Search drink"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
         onKeyDown={handleKeydown} 
