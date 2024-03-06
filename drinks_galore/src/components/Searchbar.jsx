@@ -28,8 +28,8 @@ const SearchBar = () => {
         onKeyDown={handleKeydown} 
       />
       <div className='dropdown-content'>
-        {results.map(result =>
-          <Link to={`/drinks/${result.idDrink}`}>{result.strDrink}</Link>)}
+        {results.map((result, index) =>
+          <Link key={index} to={`/drinks/${result.idDrink}`}>{result.strDrink}</Link>)}
       </div>
       
     </div>
