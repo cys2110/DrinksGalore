@@ -1,12 +1,14 @@
-
+import axios from 'axios'
+import { BASE_URL } from '../globals';
+import { useState } from 'react';
+import { Link } from 'react-router-dom'
 const SearchBar = () => {
   const [searchTerm, setSearchTerm] = useState('');
-
+  const [results, setResults] = useState([])
   
-  const handleSearch = () => {
-    
-    console.log('Searching for:', searchTerm);
-    
+  const handleSearch = async() => {
+    const response = await axios.get(`${BASE_URL}search.php?s=${encodeURIComponent(searchTerm)}`)
+    setResults(response.data.drinks)
   };
 
   
@@ -17,14 +19,18 @@ const SearchBar = () => {
   };
 
   return (
-    <div>
+    <div className='dropdown'>
       <input
         type="text"
-        placeholder="Search..."
+        placeholder="Search drink"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
         onKeyDown={handleKeydown} 
       />
+      <div className='dropdown-content'>
+        {results.map(result =>
+          <Link to={`/drinks/${result.idDrink}`}>{result.strDrink}</Link>)}
+      </div>
       
     </div>
   );
