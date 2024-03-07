@@ -1,31 +1,38 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 
-export default function Ingredients (props) {
-    const [ingredients, setIngredients] = useState([])
+export default function IngredientDetails (props) {
+    const [ingredient, setIngredient] = useState()
+    const [drinks, setDrinks] = useState([])
+    let { name } = useParams()
 
     useEffect(() => {
-        const getIngredients = async() => {
-            const response = await axios.get(`${props.apiCall}list.php?i=list`)
-            setIngredients(response.data.drinks)
+        const getIngredient = async() => {
+            const response = await axios.get(`${props.apiCall}search.php?i=${name}`)
+            setIngredient(response.data.ingredients[0])
         }
-        getIngredients()
-    })
+        getIngredient()
+    }, [])
 
-    let navigate = useNavigate()
+    useEffect(() => {
+        const getDrinks = async() => {
+            const response =await axios.get(`${props.apiCall}filter.php?i=${encodeURIComponent(ingredient.strIngredient)}`)
+            setDrinks(response.data.drinks)
+        }
+        if (ingredient) {
+            getDrinks()
+        }
+    }, [ingredient])
 
-    const showIngredient = (name) => {
-        navigate(name)
-    }
-
-    if (ingredients.length === 0) {
+    if (!ingredient) {
         return <h1>Loading</h1>
     } else {
         return (
-            <div className='ingredients-wrapper'>
-                {ingredients.map((ingredient, index) =>
-                    <p key={index} onClick={() => showIngredient(ingredient.strIngredient1)}>{ingredient.strIngredient1}</p>)}
+            <div className='ingredient-details'>
+                <h1>{ingredient.strIngredient}</h1>
+                {drinks.map(drink =>
+                    <Link key={drink.idDrink} to={`/drinks/${drink.idDrink}`}>{drink.strDrink}</Link>)}
             </div>
         )
     }
