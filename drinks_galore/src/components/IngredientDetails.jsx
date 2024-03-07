@@ -31,6 +31,16 @@ export default function IngredientDetails (props) {
         return (
             <div className='ingredient-details'>
                 <h1>{ingredient.strIngredient}</h1>
+                <dl>
+                    <dt>Type</dt>
+                    <dd>{ingredient.strType}</dd>
+
+                    <dt>ABV</dt>
+                    <dd>{ingredient.strABV}</dd>
+
+                    <dt>Description</dt>
+                    <dd>{ingredient.strDescription}</dd>
+                </dl>
                 {drinks.map(drink =>
                     <Link key={drink.idDrink} to={`/drinks/${drink.idDrink}`}>{drink.strDrink}</Link>)}
             </div>
