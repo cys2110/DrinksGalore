@@ -38,17 +38,20 @@ export default function Drinks (props) {
     }
 
     return (
-        <div className='drinks-wrapper'>
+        <div>
             <select id='category' onChange={handleChange}>
+                
             {categories.map((category, index) =>
                 <option key={index} value={normaliseCategory(category.strCategory)}>{category.strCategory}</option>)}
             </select>
+            <div className='drinks-wrapper'>
             {drinks.map((drink) => (
-                <figure key={drink.idDrink}>
+                <div key={drink.idDrink}>
                     <img src={drink.strDrinkThumb} onClick={() => showDrink(drink.idDrink)}/>
-                    <figcaption>{drink.strDrink}</figcaption>
-                </figure>
+                    <p>{drink.strDrink}</p>
+                </div>
             ))}
+            </div>
         </div>
     )
 }
