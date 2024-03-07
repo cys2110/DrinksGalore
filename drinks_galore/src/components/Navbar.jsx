@@ -1,4 +1,3 @@
- // Import the Link component from react-router-dom
 import { Link } from 'react-router-dom';
 import axios from 'axios'
 import { BASE_URL } from '../globals';
@@ -20,7 +19,7 @@ const Nav = () => {
 
   return (
     <nav className="navbar">        
-      <div>
+      <div className='navLinks'>
         {/* Links to navigate to different routes */}
         <Link to={`/drinks/${drink}`} className='nav-link' onClick={window.location.reload}>Spicy pick</Link>
         <Link to="/drinks" className="nav-link">Drinks</Link>

@@ -2,10 +2,12 @@ import Nav from './Navbar'
 import SearchBar from './Searchbar'
 const Header = () => {
     return (
-        <div> 
+        <div className='FullNav'> 
             <h1> Drinks Galore </h1>
+            <Nav/> 
             <SearchBar />
-            <Nav/>
+            
+            
         </div>
     )
 }

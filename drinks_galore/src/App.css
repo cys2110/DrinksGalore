@@ -1,42 +1,75 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+
+
+.ingredients-wrapper p {
+  font-family: "Moon Dance", cursive;
+  font-weight: 400;
+  font-style: normal;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+.drinks-wrapper img {
+  border-radius: 50%;
+  width: 125px;
+  height: 125px;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+body {
+  background-image: url(https://images.squarespace-cdn.com/content/v1/63d97c37409fe07bc6831fee/770498ac-0275-4183-8ff2-7ce9a729a523/Deaths+Door+Gin+Gimlet+Photo.jpg);
+  
+  background-size: fill;
+  
 }
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.drinks-details{
+  font-family: "Moon Dance", cursive;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 18px;
 }
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.drinks-details img{
+  border-radius: 50%;
+  width: 550px;
+  height: 550px;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
+input{
+  width:200px;
+  height: 30px;
 }
 
-.read-the-docs {
-  color: #888;
+.drinks-wrapper p{
+  color:rgb(255, 255, 255);
+  max-width: fit-content;
+}
+.drinks-wrapper div{
+  width: 200px;
+}
+.drinks-wrapper{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.dropdown{
+  margin-top: 50px;
+  max-width: fit-content;
+  
+  
+}
+h1{
+  max-width:fit-content;
+  
+}
+.navbar,
+.nav-link {
+  font-family: "Moon Dance", cursive;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 30px;
+  color: white;
+  margin: 58px;
+  max-width: fit-content;
+  
+}
+.FullNav{
+  display: flex;
+  max-height: fit-content;
+}
+.navLink{
+  margin-bottom: 10px;
 }

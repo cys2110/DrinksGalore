@@ -1,48 +1,31 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-export default function IngredientDetails (props) {
-    const [ingredient, setIngredient] = useState()
-    const [drinks, setDrinks] = useState([])
-    let { name } = useParams()
+export default function Ingredients (props) {
+    const [ingredients, setIngredients] = useState([])
 
     useEffect(() => {
-        const getIngredient = async() => {
-            const response = await axios.get(`${props.apiCall}search.php?i=${name}`)
-            setIngredient(response.data.ingredients[0])
+        const getIngredients = async() => {
+            const response = await axios.get(`${props.apiCall}list.php?i=list`)
+            setIngredients(response.data.drinks)
         }
-        getIngredient()
-    }, [])
+        getIngredients()
+    })
 
-    useEffect(() => {
-        const getDrinks = async() => {
-            const response =await axios.get(`${props.apiCall}filter.php?i=${encodeURIComponent(ingredient.strIngredient)}`)
-            setDrinks(response.data.drinks)
-        }
-        if (ingredient) {
-            getDrinks()
-        }
-    }, [ingredient])
+    let navigate = useNavigate()
 
-    if (!ingredient) {
+    const showIngredient = (name) => {
+        navigate(name)
+    }
+
+    if (ingredients.length === 0) {
         return <h1>Loading</h1>
     } else {
         return (
-            <div className='ingredient-details'>
-                <h1>{ingredient.strIngredient}</h1>
-                <dl>
-                    <dt>Type</dt>
-                    <dd>{ingredient.strType}</dd>
-
-                    <dt>ABV</dt>
-                    <dd>{ingredient.strABV}</dd>
-
-                    <dt>Description</dt>
-                    <dd>{ingredient.strDescription}</dd>
-                </dl>
-                {drinks.map(drink =>
-                    <Link key={drink.idDrink} to={`/drinks/${drink.idDrink}`}>{drink.strDrink}</Link>)}
+            <div className='ingredients-wrapper'>
+                {ingredients.map((ingredient, index) =>
+                    <p key={index} onClick={() => showIngredient(ingredient.strIngredient1)}>{ingredient.strIngredient1}</p>)}
             </div>
         )
     }
