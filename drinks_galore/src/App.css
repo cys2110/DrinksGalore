@@ -12,7 +12,7 @@
   height: 125px;
 }
 body {
-  background-image: url(https://images.squarespace-cdn.com/content/v1/63d97c37409fe07bc6831fee/770498ac-0275-4183-8ff2-7ce9a729a523/Deaths+Door+Gin+Gimlet+Photo.jpg);
+  background-image: url(https://frenchly.us/wp-content/uploads/sites/9/2023/06/Scilicet-4.jpg.webp);
   
   background-size: fill;
   
@@ -69,7 +69,33 @@ h1{
 .FullNav{
   display: flex;
   max-height: fit-content;
+  margin-bottom: 200px;
+  
 }
 .navLink{
   margin-bottom: 10px;
+}
+.ingredient-details{
+  max-width: fit-content;
+  margin-left: 10%;
+  text-align: center;
+  color: rgb(79, 204, 241);
+}
+.ingredient-details h1{
+  margin-left: 30%;
+}
+.ingredient-details a{
+  color: rgb(48, 128, 202);
+}
+.drinks-details{
+  margin-left: 50%;
+}
+.drinks-details dl{
+  margin-left: 30%;
+}
+.drinks-details h3{
+  margin-left: 30%;
+}
+#language{
+  margin-left: 30%;
 }
